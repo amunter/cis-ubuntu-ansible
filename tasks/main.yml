@@ -19,3 +19,6 @@
 
   - include: section_06.yml
     tags: section06
+
+  - include: ncnr.yml
+    tags: ncnr

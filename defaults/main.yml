@@ -35,7 +35,7 @@ apt_cache_valid_time: 3600
 # Section 02 Level 2
 ntp_package: chrony
 # We focus a server installation, but we may be accept some desktops.
-remove_xserver: True
+remove_xserver: False
 
 # Section 03
 # Section 03 Level 1
@@ -52,8 +52,8 @@ enable_tcp_syncookies: True
 disable_ipv6: True
 
 # Section 03 Level 4
-enable_hosts_allow: False
-enable_hosts_deny: False
+enable_hosts_allow: True
+enable_hosts_deny: True
 
 # Section 03 Level 6
 activate_iptables: True
@@ -70,7 +70,7 @@ enable_auditd: True
 max_log_file_auditd: 200
 
 # Section 4 Level 2
-set_rsyslog_remote: True
+set_rsyslog_remote: False
 syslog_package: rsyslog
 # Set rsyslog's logs remote server address to send logs. 
 # WARNING: Update the IP address without localhost address or rsyslog will hit 100% of the CPU usage
@@ -99,5 +99,12 @@ lock_shadow_accounts: False
 modify_user_homes: True
 
 # Section 06 Level 5
-# Default ntp server for when none-already exists.
-ntp_server: 192.168.112.1
+# Default ntp/chrony server for when none-already exists.
+time_servers: 
+    - time-b.nist.gov
+    - time-b.timefreq.bldrdoc.gov
+
+# Warning Banner Content (issue, issue.net)
+cis_warning_banner: "You are accessing a U.S. Government information system, which includes: 1) this computer, 2) this computer network, 3) all computers  connected to this network, and 4) all devices and storage media attached to this network or to a computer on this network. You understand and consent to the following: you may access this information system for authorized use only; you have no reasonable expectation of privacy regarding any communication of data transiting or stored on this information system; at any time and for any lawful Government purpose, the Government may monitor, intercept, and search and seize any communication or data transiting or stored on this information system; and any communications or data transiting or stored on this information system may be disclosed or used for any lawful Government purpose."
+# End Banner
+

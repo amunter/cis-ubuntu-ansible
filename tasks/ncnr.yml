@@ -17,6 +17,7 @@
 - name: "NCNR | Create tenscan user"
   user:
       name: tenscan
+      group: root
       groups: sudo
       state: present
   tags: 
@@ -42,12 +43,13 @@
       state: file
       owner: root
       group: root
-      mode: 0644
+      mode: 0640
   with_items:
       - /etc/modprobe.d/CIS.conf
       - /etc/audit/auditd.conf
       - /etc/audit/audit.rules
       - /etc/default/useradd
+      - /etc/ssh/sshd_config
   tags:
       - level1
       - patch
@@ -59,7 +61,7 @@
       state: directory
       owner: root
       group: root
-      mode: 0755
+      mode: 0750
   with_items:
       - /etc/audit
       - /var/spool/cron
